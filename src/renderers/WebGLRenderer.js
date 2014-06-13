@@ -4070,8 +4070,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 		}
 
-		if ( shaderID ) {
-
+		if ( shaderID && (material.vertexShader === undefined || material.fragmentShader === undefined) ) {
 			setMaterialShaders( material, THREE.ShaderLib[ shaderID ] );
 
 		}
@@ -4383,7 +4382,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 			if ( material instanceof THREE.MeshBasicMaterial ||
 				 material instanceof THREE.MeshLambertMaterial ||
-				 material instanceof THREE.MeshPhongMaterial ) {
+				 material instanceof THREE.MeshPhongMaterial)
+			  {
 
 				refreshUniformsCommon( m_uniforms, material );
 
